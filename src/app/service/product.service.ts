@@ -35,19 +35,21 @@ export class ProductService {
   constructor() {
   }
 
-  getAll() {
+  getAll(): Product[] {
     return this.products;
   }
 
-  saveProduct(product) {
+  // @ts-ignore
+  saveProduct(product): Product[] {
     this.products.push(product);
   }
 
-  findById(id: number) {
+  findById(id: number): Product {
     return this.products.find(product => product.id === id);
   }
 
-  updateProduct(id: number, product: Product) {
+  // @ts-ignore
+  updateProduct(id: number, product: Product): Product[] {
     for (let i = 0; i < this.products.length; i++) {
       if (this.products[i].id === id) {
         this.products[i] = product;
@@ -55,7 +57,8 @@ export class ProductService {
     }
   }
 
-  deleteProduct(id: number) {
+  // @ts-ignore
+  deleteProduct(id: number): Product[] {
     this.products = this.products.filter(product => {
       return product.id !== id;
     });

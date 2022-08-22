@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {ProductService} from '../../service/product.service';
+import {Product} from '../../model/product';
 
 @Component({
   selector: 'app-product-create',
@@ -21,7 +22,8 @@ export class ProductCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit() {
+  // @ts-ignore
+  submit(): Product[] {
     const product = this.productForm.value;
     this.productService.saveProduct(product);
     this.productForm.reset();

@@ -9,7 +9,7 @@ import {Product} from '../../model/product';
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];
-
+  idDelete: number;
   constructor(private productService: ProductService) {
   }
 
@@ -17,8 +17,26 @@ export class ProductListComponent implements OnInit {
     this.getAll();
   }
 
-  getAll() {
+  // @ts-ignore
+  getAll(): Product[] {
     this.products = this.productService.getAll();
   }
 
+  showDelete(product: Product) {
+    this.idDelete = product.id || 0;
+  }
+
+  delete(idDelete: number) {
+    console.log(idDelete);
+    this.productService.deleteProduct(idDelete);
+    this.ngOnInit();
+  }
+
+  // deleteProduct(id: number) {
+  //   this.productService.deleteProduct(id).subscribe(() => {
+  //     this.router.navigate(['/customer']).then(r => this.ngOnInit() )  ;
+  //   }, e => {
+  //     console.log(e);
+  //   });
+  // }
 }

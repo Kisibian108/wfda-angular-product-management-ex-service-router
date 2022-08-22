@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../../service/category.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
+import {Category} from '../../model/category';
 
 @Component({
   selector: 'app-category-delete',
@@ -33,7 +34,8 @@ export class CategoryDeleteComponent implements OnInit {
     });
   }
 
-  deleteCategory(id: number) {
+  // @ts-ignore
+  deleteCategory(id: number): Category[] {
     this.categoryService.deleteCategory(id).subscribe(() => {
       this.router.navigate(['/category/list']);
     }, e => {

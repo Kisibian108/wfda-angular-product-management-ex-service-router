@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {CategoryService} from '../../service/category.service';
+import {Category} from '../../model/category';
 
 @Component({
   selector: 'app-category-create',
@@ -19,7 +20,8 @@ export class CategoryCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-  submit() {
+  // @ts-ignore
+  submit(): Category[] {
     const category = this.categoryForm.value;
     this.categoryService.saveCategory(category).subscribe(() => {
       this.categoryForm.reset();
